@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Calc {
-    private int num1, num2;    
+    private int a, b;    
     private String operator;
 
   
@@ -50,28 +50,28 @@ public class Calc {
 
       
         if (parse.isNumeric(expItems.get(0)) && parse.isNumeric(expItems.get(2))){      
-            num1 = Integer.parseInt(expItems.get(0));
-            num2 = Integer.parseInt(expItems.get(2));
+            a = Integer.parseInt(expItems.get(0));
+            b = Integer.parseInt(expItems.get(2));
             isRomanExp = false;
         } else if (parse.isRoman(expItems.get(0)) && parse.isRoman(expItems.get(2))){ 
-            num1 = parse.romeToArabConvert(expItems.get(0));
-            num2 = parse.romeToArabConvert(expItems.get(2));
+            a = parse.romeToArabConvert(expItems.get(0));
+            b = parse.romeToArabConvert(expItems.get(2));
             isRomanExp = true;
         } else {   
             throw new CalcException("ОШИБКА. Числа должны быть оба арабские или оба римские");
         }
 
        
-        if (!(num1>=1 && num1<=10)){
+        if (!(a>=1 && a<=10)){
             throw new CalcException("ОШИБКА. Число #1 должно быть от 1 до 10 или от I до X включительно");
         }
 
-        if (!(num2>=1 && num2<=10)){
+        if (!(b>=1 && b<=10)){
             throw new CalcException("ОШИБКА. Число #2 должно быть от 1 до 10 или от I до X включительно");
         }
 
      
-        int res = calcExp(num1, operator, num2);
+        int res = calcExp(a, operator, b);
 
         
         if (isRomanExp){
